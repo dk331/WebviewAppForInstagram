@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Assignment</string>
+    <string name="go_to_settings_for_permissions">You need to give some mandatory permissions to continue. Do you want to go to app settings?</string>
+</resources>
