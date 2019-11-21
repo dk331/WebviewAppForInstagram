@@ -1,4 +1,4 @@
-package com.gsered.assignment;
+package com.dhananjay.assignment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private ValueCallback<Uri[]> mUMA;
     private String instaURL = "https://www.instagram.com";
     private WebView webView;
+    private SwipeRefreshLayout swipeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             webView.loadUrl(instaURL);
         }
 
-        final SwipeRefreshLayout swipeView = findViewById(R.id.swipe);
+        swipeView = findViewById(R.id.swipe);
         swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         webView.saveState(outState);
     }
@@ -231,6 +232,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         Uri[] results = null;
         //Check if response is positive
         if (resultCode == RESULT_OK) {
